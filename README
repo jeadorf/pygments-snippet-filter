@@ -1,0 +1,23 @@
+======
+README
+======
+
+Installation
+============
+
+On Unix systems, install the plugin using setuptools like this:
+
+$ sudo python setup.py install
+
+or as well
+
+$ python setup.py install --user
+
+Test the installation using 
+
+$ pygmentize -L
+
+where the 'snippet' filter appears if the installation is successful. In order
+to uninstall the plugin, go to the installation folder (system-dependent) and
+remove the python egg and the corresponding line in easy-install.pth. 
+
