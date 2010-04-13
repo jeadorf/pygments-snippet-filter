@@ -30,6 +30,21 @@ class SnippetFilterTest(unittest.TestCase):
         """Extract the last line."""
         self.lexer.add_filter(SnippetFilter(fromline=5))
         self.assertEqual(sample_text.split('\n')[4] + '\n', highlight(sample_text, self.lexer, self.formatter))
+    def test_fromline(self):
+        """Extract some of the last lines."""
+        self.lexer.add_filter(SnippetFilter(fromline=3))
+        exp = "\n".join(sample_text.split("\n")[2:])
+        self.assertEqual(exp, highlight(sample_text, self.lexer, self.formatter))
+    def test_toline(self):
+        """Extract some of the first lines."""
+        self.lexer.add_filter(SnippetFilter(toline=3))
+        exp = "\n".join(sample_text.split("\n")[:2]) + "\n"
+        self.assertEqual(exp, highlight(sample_text, self.lexer, self.formatter))
+    def test_fromto(self):
+        """Extract some of the lines in the middle."""
+        self.lexer.add_filter(SnippetFilter(fromline=2,toline=4))
+        exp = "\n".join(sample_text.split("\n")[1:3]) + "\n"
+        self.assertEqual(exp, highlight(sample_text, self.lexer, self.formatter))
     def test_empty(self):
         """Extract nothing at all."""
         self.lexer.add_filter(SnippetFilter(fromline=3, toline=3))
