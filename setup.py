@@ -18,7 +18,7 @@ setup(
     license='BSD License',
     keywords='pygments plugin filter line snippet',
     url='http://bitbucket.org/jeadorf/pygments-snippet-filter',
-    test_suite='snippetfilter.SnippetFilterTest',
+    test_suite='snippetfilter.test_suite',
     entry_points='''
     [pygments.filters]
     snippet = snippetfilter:SnippetFilter

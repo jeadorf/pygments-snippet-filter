@@ -3,7 +3,9 @@
 
 from pygments.filters import Filter
 from pygments.util import get_int_opt
+from pygments.token import Text
 import sys
+from itertools import izip, count
 
 class SnippetFilter(Filter):
     """
@@ -22,16 +24,14 @@ class SnippetFilter(Filter):
         self.rd = 0
 
     def filter(self, lexer, stream):
-        addlf = False
         for ttype, value in stream:
             lines = value.split('\n')
-            t = '\n'.join(lines[
-                max(0, self.fr-self.rd):
-                self.to-self.rd])
-            if len(t) > 0:
-                yield ttype, t
-                addlf = (t[-1] != '\n')
-            self.rd += len(lines) - 1
-        if addlf:
-            yield None, '\n'
+            for i, ln in izip(count(0), lines):
+                if self.rd >= self.fr and self.rd < self.to:
+                    if i < len(lines) - 1:
+                        yield ttype, ln + '\n'
+                    else:
+                        yield ttype, ln
+                self.rd += 1
+            self.rd -= 1
 
