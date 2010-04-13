@@ -13,12 +13,12 @@ setup(
     author_email='jeadorf@gmx.de',
     description=__doc__,
     long_description=__doc__,
-    packages = setuptools.find_packages(), #['snippetfilter'],
+    packages = setuptools.find_packages(),
     platforms = 'any',
     license='BSD License',
     keywords='pygments plugin filter line snippet',
     url='http://bitbucket.org/jeadorf/pygments-snippet-filter',
-    test_suite='test_snippetfilter',
+    test_suite='snippetfilter.SnippetFilterTest',
     entry_points='''
     [pygments.filters]
     snippet = snippetfilter:SnippetFilter
