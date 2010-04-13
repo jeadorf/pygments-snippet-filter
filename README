@@ -7,13 +7,13 @@ Installation
 
 On Unix systems, install the plugin using setuptools like this:
 
-1. $ python setup.py build
+1. Install the plugin
 
-2. $ sudo python setup.py install
+    $ sudo python setup.py install
         or as well
     $ python setup.py install --user
 
-3. Test the installation using 
+2. Test the installation 
 
     $ pygmentize -L
 
