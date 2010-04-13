@@ -3,6 +3,7 @@
 """
 A filter for Pygments that extracts a code snippet based on a range of line numbers.
 """
+import setuptools
 from setuptools import setup
 
 setup(
@@ -12,7 +13,7 @@ setup(
     author_email='jeadorf@gmx.de',
     description=__doc__,
     long_description=__doc__,
-    packages = [''],
+    packages = setuptools.find_packages(), #['snippetfilter'],
     platforms = 'any',
     license='BSD License',
     keywords='pygments plugin filter line snippet',
